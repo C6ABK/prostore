@@ -63,7 +63,6 @@ const AddToCart = ({ cart, item }: { cart?: Cart; item: CartItem }) => {
     return existItem ? (
         <div>
             <Button
-                className="rounded-full"
                 type="button"
                 variant="outline"
                 onClick={handleRemoveFromCart}
@@ -77,7 +76,6 @@ const AddToCart = ({ cart, item }: { cart?: Cart; item: CartItem }) => {
             </Button>
             <span className="px-6">{existItem.qty}</span>
             <Button
-                className="rounded-full"
                 type="button"
                 variant="outline"
                 onClick={handleAddToCart}
