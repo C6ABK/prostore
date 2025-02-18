@@ -5,8 +5,8 @@ import OrderDetailsTable from "./order-details-table"
 import { ShippingAddress } from "@/types"
 // import { ShippingAddress } from "@/types"
 
-export const metadata:Metadata = {
-    title: 'Order Details'
+export const metadata: Metadata = {
+    title: "Order Details",
 }
 
 const OrderDetailsPage = async (props: {
@@ -17,12 +17,17 @@ const OrderDetailsPage = async (props: {
     const { id } = await props.params
 
     const order = await getOrderById(id)
-    if(!order) notFound()
+    if (!order) notFound()
 
-    return <OrderDetailsTable order={{
-        ...order,
-        shippingAddress: order.shippingAddress as ShippingAddress
-    }}/>
+    return (
+        <OrderDetailsTable
+            order={{
+                ...order,
+                shippingAddress: order.shippingAddress as ShippingAddress,
+            }}
+            paypalClientId={process.env.PAYPAL_CLIENT_ID || "sb"}
+        />
+    )
 }
 
 export default OrderDetailsPage
